@@ -198,45 +198,20 @@ public class Gestor {
 	}
 
 	/**
-	 * Borra una persona de la lista de personas
+	 * modifica una factura
 	 * 
-	 * @param dni
+	 * @param cliente
+	 * @param trabajador
+	 * @param factura
 	 */
-	public void delPersona(String dni) {
-		personas.remove(buscarPersona(dni));
-		Collections.sort(personas);
-	}
+	public void modFactura(String cliente, String trabajador, String factura) {
+		for (Factura fact : facturas) {
+			if (fact.getIdFactura().equals(factura)) {
+				fact.setCliente(cliente);
+				fact.setDependiente(trabajador);
 
-	/**
-	 * Busca una persona en el arraylist y la devuelve
-	 * 
-	 * @param dni
-	 * @return devuelve una persona (Objeto)
-	 */
-	public Persona buscarPersona(String dni) {
-		for (Persona persona : personas) {
-			if (persona.getDni().equals(dni)) {
-				return (persona);
 			}
-
 		}
-		return null;
-	}
-
-	/**
-	 * Busca un producto en el arraylist y la devuelve
-	 * 
-	 * @param codigoBarras
-	 * @return devuelve un producto (Objeto)
-	 */
-	public Producto buscarProducto(String codigoBarras) {
-		for (Producto producto : productos) {
-			if (producto.getCodigoBarras().equals(codigoBarras)) {
-				return (producto);
-			}
-
-		}
-		return null;
 	}
 
 	/**
@@ -253,7 +228,6 @@ public class Gestor {
 	 * @param fechaNacimiento
 	 *            modificada
 	 */
-
 	public void modCliente(String dni, String nombre, String apellidos, String domicilio, LocalDate fechaNacimiento) {
 		for (Persona cliente : personas) {
 			if (cliente.getDni().equals(dni)) {
@@ -339,6 +313,48 @@ public class Gestor {
 	}
 
 	/**
+	 * Busca una persona en el arraylist y la devuelve
+	 * 
+	 * @param dni
+	 * @return devuelve una persona (Objeto)
+	 */
+	public Persona buscarPersona(String dni) {
+		for (Persona persona : personas) {
+			if (persona.getDni().equals(dni)) {
+				return (persona);
+			}
+
+		}
+		return null;
+	}
+
+	/**
+	 * Busca un producto en el arraylist y la devuelve
+	 * 
+	 * @param codigoBarras
+	 * @return devuelve un producto (Objeto)
+	 */
+	public Producto buscarProducto(String codigoBarras) {
+		for (Producto producto : productos) {
+			if (producto.getCodigoBarras().equals(codigoBarras)) {
+				return (producto);
+			}
+
+		}
+		return null;
+	}
+
+	/**
+	 * Borra una persona de la lista de personas
+	 * 
+	 * @param dni
+	 */
+	public void delPersona(String dni) {
+		personas.remove(buscarPersona(dni));
+		Collections.sort(personas);
+	}
+
+	/**
 	 * Borra un producto por su codigo de barras
 	 * 
 	 * @param codBarras
@@ -346,6 +362,20 @@ public class Gestor {
 	public void delProducto(String codBarras) {
 		productos.remove(buscarProducto(codBarras));
 		Collections.sort(productos);
+	}
+
+	/**
+	 * Borra una factura
+	 * 
+	 * @param idFactura
+	 */
+	public void delFactura(String idFactura) {
+		for (Factura factura : facturas) {
+			if (factura.getIdFactura().equals(idFactura)) {
+				facturas.remove(factura);
+			}
+		}
+
 	}
 
 	/**
@@ -500,7 +530,7 @@ public class Gestor {
 
 	/**
 	 * 
-	 * apaga la conexion con la base de datos
+	 * Apaga la conexion con la base de datos
 	 */
 	public void desconectarBBDD() {
 		try {
@@ -539,34 +569,4 @@ public class Gestor {
 		}
 	}
 
-	/**
-	 * borra una factura
-	 * 
-	 * @param idFactura
-	 */
-	public void delFactura(String idFactura) {
-		for (Factura factura : facturas) {
-			if (factura.getIdFactura().equals(idFactura)) {
-				facturas.remove(factura);
-			}
-		}
-
-	}
-
-	/**
-	 * modifica una factura
-	 * 
-	 * @param cliente
-	 * @param trabajador
-	 * @param factura
-	 */
-	public void modFactura(String cliente, String trabajador, String factura) {
-		for (Factura fact : facturas) {
-			if (fact.getIdFactura().equals(factura)) {
-				fact.setCliente(cliente);
-				fact.setDependiente(trabajador);
-
-			}
-		}
-	}
 }
