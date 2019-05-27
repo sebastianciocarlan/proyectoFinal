@@ -23,7 +23,7 @@ public class ListarFacturasUsuario extends JDialog {
 
 	public ListarFacturasUsuario(Gestor gestor) {
 		inicializarGraficos();
-		setTextPaneText(gestor.mostrarFacturas());
+		setTextPaneText(gestor.listarFacturas());
 	}
 
 	public void inicializarGraficos() {

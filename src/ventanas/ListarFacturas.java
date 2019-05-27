@@ -39,7 +39,7 @@ public class ListarFacturas extends JDialog {
 	public void handlers(Gestor gestor) {
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setTextPaneText(gestor.mostrarFacturasCliente(textDni.getText()));
+				setTextPaneText(gestor.listarFacturasCliente(textDni.getText()));
 			}
 		});
 

@@ -34,7 +34,7 @@ public class BuscarProducto extends JDialog {
 	public void handlers(Gestor gestor) {
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				textArea.setText(gestor.buscarProducto(textCodBarras.getText()));
+				textArea.setText(gestor.buscarProducto(textCodBarras.getText()).toString());
 			}
 		});
 	}

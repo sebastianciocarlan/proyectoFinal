@@ -34,12 +34,21 @@ public class Gestor {
 	private ArrayList<Factura> facturas;
 
 	/**
+	 * Constructor de la clase gestor (Que controla todo el programa)
+	 */
+	public Gestor() {
+		personas = new ArrayList<Persona>();
+		productos = new ArrayList<Producto>();
+		facturas = new ArrayList<Factura>();
+	}
+
+	/**
 	 * 
 	 * Devuelve trabjadores
 	 * 
 	 * @return Un string que contiene todos los trabajadores.
 	 */
-	public String devuelveTrabajadores() {
+	public String listarTrabajadores() {
 		String aux = "";
 		for (Persona trabajador : personas) {
 			if (trabajador instanceof Trabajador) {
@@ -54,7 +63,7 @@ public class Gestor {
 	 * 
 	 * @return Un string que contiene todos los trabajadores
 	 */
-	public String devuelveProductos() {
+	public String listarProductos() {
 		String aux = "";
 		for (Producto producto : productos) {
 			aux = aux + "\n" + producto.toString();
@@ -65,9 +74,9 @@ public class Gestor {
 	/**
 	 * Devuelve clientes
 	 * 
-	 * @return Un string que contiene todos los trabajadores
+	 * @return Un string que contiene todos los clientes
 	 */
-	public String devuelveClientes() {
+	public String listarClientes() {
 		String aux = "";
 		for (Persona cliente : personas) {
 			if (cliente instanceof Cliente) {
@@ -77,10 +86,33 @@ public class Gestor {
 		return aux;
 	}
 
-	public Gestor() {
-		personas = new ArrayList<Persona>();
-		productos = new ArrayList<Producto>();
-		facturas = new ArrayList<Factura>();
+	/**
+	 * muestra todas las facturas
+	 * 
+	 * @return
+	 */
+	public String listarFacturas() {
+		String aux = "";
+		for (Factura factura : facturas) {
+			aux = aux + "\n" + factura.toString();
+		}
+		return aux;
+	}
+
+	/**
+	 * muestra facturas de un cliente
+	 * 
+	 * @param dniCliente
+	 * @return
+	 */
+	public String listarFacturasCliente(String dniCliente) {
+		String aux = "";
+		for (Factura factura : facturas) {
+			if (factura.getCliente().equals(dniCliente)) {
+				aux = aux + factura.toString();
+			}
+		}
+		return aux;
 	}
 
 	/**
@@ -118,50 +150,108 @@ public class Gestor {
 	}
 
 	/**
+	 * Añade un producto de tipo alimentacion
+	 * 
+	 * @param precio
+	 * @param marca
+	 * @param nombreProducto
+	 * @param codigoBarras
+	 * @param alergenos
+	 * @param ingredientes
+	 * @param fechaCaducidad
+	 */
+	public void addAlimentacion(double precio, String marca, String nombreProducto, String codigoBarras,
+			String alergenos, String ingredientes, LocalDate fechaCaducidad) {
+		productos.add(
+				new Alimentacion(precio, marca, nombreProducto, codigoBarras, alergenos, ingredientes, fechaCaducidad));
+		Collections.sort(productos);
+	}
+
+	/**
+	 * Añade un producto de tipo drogueria
+	 * 
+	 * @param precio
+	 * @param marca
+	 * @param nombreProducto
+	 * @param codigoBarras
+	 * @param tipo
+	 * @param esImportado
+	 */
+	public void addDrogueria(double precio, String marca, String nombreProducto, String codigoBarras, String tipo,
+			boolean esImportado) {
+		productos.add(new Drogueria(precio, marca, nombreProducto, codigoBarras, tipo, esImportado));
+		Collections.sort(productos);
+	}
+
+	/**
+	 * crea una factura
+	 * 
+	 * @param dniCliente
+	 * @param dniDependiente
+	 * @param idFactura
+	 */
+	public void addFactura(String dniCliente, String dniDependiente, String idFactura) {
+
+		facturas.add(new Factura(idFactura, dniDependiente, dniCliente));
+		Collections.sort(facturas);
+
+	}
+
+	/**
 	 * Borra una persona de la lista de personas
 	 * 
 	 * @param dni
 	 */
 	public void delPersona(String dni) {
-		Persona aux = null;
-		for (Persona per : personas) {
-			if (per.getDni().equals(dni)) {
-				aux = per;
-			}
-
-		}
-		personas.remove(aux);
+		personas.remove(buscarPersona(dni));
 		Collections.sort(personas);
 	}
 
-	public String buscarPersona(String dni) {
+	/**
+	 * Busca una persona en el arraylist y la devuelve
+	 * 
+	 * @param dni
+	 * @return devuelve una persona (Objeto)
+	 */
+	public Persona buscarPersona(String dni) {
 		for (Persona persona : personas) {
 			if (persona.getDni().equals(dni)) {
-				return (persona.toString());
+				return (persona);
 			}
 
 		}
-		return ("NO SE HA ENCONTRADO");
+		return null;
 	}
 
-	public String buscarProducto(String codigoBarras) {
+	/**
+	 * Busca un producto en el arraylist y la devuelve
+	 * 
+	 * @param codigoBarras
+	 * @return devuelve un producto (Objeto)
+	 */
+	public Producto buscarProducto(String codigoBarras) {
 		for (Producto producto : productos) {
 			if (producto.getCodigoBarras().equals(codigoBarras)) {
-				return (producto.toString());
+				return (producto);
 			}
 
 		}
-		return ("NO SE HA ENCONTRADO");
+		return null;
 	}
 
 	/**
 	 * Modifica un cliente indicando un dni
 	 * 
 	 * @param dni
+	 *            de la persona a buscar
 	 * @param nombre
+	 *            modificado
 	 * @param apellidos
+	 *            modificados
 	 * @param domicilio
+	 *            modificado
 	 * @param fechaNacimiento
+	 *            modificada
 	 */
 
 	public void modCliente(String dni, String nombre, String apellidos, String domicilio, LocalDate fechaNacimiento) {
@@ -249,51 +339,13 @@ public class Gestor {
 	}
 
 	/**
-	 * Añade un producto de tipo alimentacion
-	 * 
-	 * @param precio
-	 * @param marca
-	 * @param nombreProducto
-	 * @param codigoBarras
-	 * @param alergenos
-	 * @param ingredientes
-	 * @param fechaCaducidad
-	 */
-	public void addAlimentacion(double precio, String marca, String nombreProducto, String codigoBarras,
-			String alergenos, String ingredientes, LocalDate fechaCaducidad) {
-		productos.add(
-				new Alimentacion(precio, marca, nombreProducto, codigoBarras, alergenos, ingredientes, fechaCaducidad));
-		Collections.sort(productos);
-	}
-
-	/**
-	 * Añade un producto de tipo drogueria
-	 * 
-	 * @param precio
-	 * @param marca
-	 * @param nombreProducto
-	 * @param codigoBarras
-	 * @param tipo
-	 * @param esImportado
-	 */
-	public void addDrogueria(double precio, String marca, String nombreProducto, String codigoBarras, String tipo,
-			boolean esImportado) {
-		productos.add(new Drogueria(precio, marca, nombreProducto, codigoBarras, tipo, esImportado));
-		Collections.sort(productos);
-	}
-
-	/**
 	 * Borra un producto por su codigo de barras
 	 * 
 	 * @param codBarras
 	 */
 	public void delProducto(String codBarras) {
-		for (Producto product : productos) {
-			if (product.getCodigoBarras().equals(codBarras)) {
-				productos.remove(product);
-				Collections.sort(productos);
-			}
-		}
+		productos.remove(buscarProducto(codBarras));
+		Collections.sort(productos);
 	}
 
 	/**
@@ -303,7 +355,6 @@ public class Gestor {
 		try {
 			conexionBD = DriverManager.getConnection(servidor + bbdd, user, password);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -314,7 +365,6 @@ public class Gestor {
 	public void cargarBaseDatos() {
 		String sentencia = "SELECT dni,nombre,apellidos,domicilio,fechaNacimiento,esVip FROM clientes";
 		PreparedStatement sentenciaStat;
-
 		try {
 			sentenciaStat = conexionBD.prepareStatement(sentencia);
 			ResultSet resultado = sentenciaStat.executeQuery();
@@ -323,11 +373,9 @@ public class Gestor {
 						resultado.getString(4), resultado.getDate(5).toLocalDate(), resultado.getBoolean(6));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		sentencia = "SELECT dni,nombre,apellidos,domicilio,fechaNacimiento,fechaInicioContrato,puesto FROM trabajadores";
-
 		try {
 			sentenciaStat = conexionBD.prepareStatement(sentencia);
 			ResultSet resultado = sentenciaStat.executeQuery();
@@ -337,7 +385,6 @@ public class Gestor {
 						resultado.getString(7));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -361,7 +408,6 @@ public class Gestor {
 				}
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return false;
@@ -384,7 +430,6 @@ public class Gestor {
 				}
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return false;
@@ -407,7 +452,6 @@ public class Gestor {
 				}
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return false;
@@ -432,7 +476,6 @@ public class Gestor {
 				}
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		try {
@@ -451,7 +494,6 @@ public class Gestor {
 				}
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -464,7 +506,6 @@ public class Gestor {
 		try {
 			conexionBD.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -477,10 +518,8 @@ public class Gestor {
 			ser.writeObject(facturas);
 			ser.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -494,41 +533,10 @@ public class Gestor {
 			facturas = (ArrayList<Factura>) ser.readObject();
 			ser.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
-
-	/**
-	 * muestra facturas de un cliente
-	 * 
-	 * @param dniCliente
-	 * @return
-	 */
-	public String mostrarFacturasCliente(String dniCliente) {
-		String aux = "";
-		for (Factura factura : facturas) {
-			if (factura.getCliente().equals(dniCliente)) {
-				aux = aux + factura.toString();
-			}
-		}
-		return aux;
-	}
-
-	/**
-	 * crea una factura
-	 * 
-	 * @param dniCliente
-	 * @param dniDependiente
-	 * @param idFactura
-	 */
-	public void crearFactura(String dniCliente, String dniDependiente, String idFactura) {
-		facturas.add(new Factura(idFactura, dniDependiente, dniCliente));
-		Collections.sort(facturas);
-
 	}
 
 	/**
@@ -543,19 +551,6 @@ public class Gestor {
 			}
 		}
 
-	}
-
-	/**
-	 * muestra todas las facturas
-	 * 
-	 * @return
-	 */
-	public String mostrarFacturas() {
-		String aux = "";
-		for (Factura factura : facturas) {
-			aux = aux + "\n" + factura.toString();
-		}
-		return aux;
 	}
 
 	/**

@@ -36,7 +36,7 @@ public class CrearFactura extends JDialog {
 	public void handlers(Gestor gestor) {
 		btnCrearFactura.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				gestor.crearFactura(textCliente.getText(), textTrabajador.getText(), textFactura.getText());
+				gestor.addFactura(textCliente.getText(), textTrabajador.getText(), textFactura.getText());
 				dispose();
 			}
 		});

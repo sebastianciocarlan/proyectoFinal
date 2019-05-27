@@ -25,7 +25,7 @@ public class MostrarClientes extends JDialog {
 	public MostrarClientes(Gestor gestor) {
 		setResizable(false);
 		inicializarGraficos();
-		setTextPaneText(gestor.devuelveClientes());
+		setTextPaneText(gestor.listarClientes());
 		
 	}
 	public void inicializarGraficos() {

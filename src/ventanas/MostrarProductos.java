@@ -25,7 +25,7 @@ public class MostrarProductos extends JDialog {
 	public MostrarProductos(Gestor gestor) {
 		setResizable(false);
 		inicializarGraficos();
-		setTextPaneText(gestor.devuelveProductos());
+		setTextPaneText(gestor.listarProductos());
 		
 	}
 	public void inicializarGraficos() {

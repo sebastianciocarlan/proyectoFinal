@@ -25,7 +25,7 @@ public class MostrarTrabajador extends JDialog {
 	public MostrarTrabajador(Gestor gestor) {
 		setResizable(false);
 		inicializarGraficos();
-		setTextPaneText(gestor.devuelveTrabajadores());
+		setTextPaneText(gestor.listarTrabajadores());
 		
 	}
 	public void inicializarGraficos() {

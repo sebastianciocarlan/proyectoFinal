@@ -32,7 +32,7 @@ public class BuscarPersona extends JDialog {
 	public void handlers(Gestor gestor) {
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				textArea.setText(gestor.buscarPersona(textDni.getText()));
+				textArea.setText(gestor.buscarPersona(textDni.getText()).toString());
 			}
 		});
 	}
