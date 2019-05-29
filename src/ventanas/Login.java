@@ -79,7 +79,6 @@ public class Login extends JDialog {
 		contentPanel.add(lblPassword);
 
 		textUser = new JTextField();
-		textUser.setText("darknnesilver");
 		textUser.setBounds(89, 8, 127, 20);
 		contentPanel.add(textUser);
 		textUser.setColumns(10);

@@ -26,6 +26,7 @@ public class BuscarPersona extends JDialog {
 	private JTextArea textArea = new JTextArea();
 
 	public BuscarPersona(Gestor gestor) {
+		setTitle("Buscar persona");
 		inicializarGraficos();
 		handlers(gestor);
 	}

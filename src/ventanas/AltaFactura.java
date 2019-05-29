@@ -14,7 +14,7 @@ import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class CrearFactura extends JDialog {
+public class AltaFactura extends JDialog {
 
 
 	private static final long serialVersionUID = -2174195994690665496L;
@@ -28,7 +28,7 @@ public class CrearFactura extends JDialog {
 	private final JButton btnCrearFactura = new JButton("Crear factura");
 
 
-	public CrearFactura(Gestor gestor) {
+	public AltaFactura(Gestor gestor) {
 		inicializarGraficos();
 		handlers(gestor);
 		

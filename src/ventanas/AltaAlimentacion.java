@@ -18,6 +18,7 @@ import clases.Gestor;
 import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class AltaAlimentacion extends JDialog {
 	private static final long serialVersionUID = -8233413010934210986L;
@@ -36,10 +37,11 @@ public class AltaAlimentacion extends JDialog {
 	private DatePicker datePicker = new DatePicker();
 	private JTextArea textIngredientes = new JTextArea();
 	private JLabel lblIngredientes = new JLabel("Ingredientes:");
-	private JButton okButton = new JButton("OK");
+	private JButton okButton = new JButton("Alta");
 	private JPanel buttonPane = new JPanel();
 
 	public AltaAlimentacion(Gestor gestor) {
+		setTitle("Alta alimentacion");
 		inicializarGraficos();
 		handlers(gestor);
 	}
@@ -56,6 +58,7 @@ public class AltaAlimentacion extends JDialog {
 		setResizable(false);
 		setBounds(100, 100, 428, 418);
 		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBackground(Color.WHITE);
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
@@ -111,6 +114,7 @@ public class AltaAlimentacion extends JDialog {
 
 		lblIngredientes.setBounds(20, 179, 142, 14);
 		contentPanel.add(lblIngredientes);
+		buttonPane.setBackground(Color.WHITE);
 
 		buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		getContentPane().add(buttonPane, BorderLayout.SOUTH);

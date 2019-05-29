@@ -15,6 +15,7 @@ import com.github.lgooddatepicker.components.DatePicker;
 import clases.Gestor;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class AltaTrabajador extends JDialog {
 
@@ -39,13 +40,14 @@ public class AltaTrabajador extends JDialog {
 	private DatePicker datePickerContrato = new DatePicker();
 	private JLabel lblPuesto = new JLabel("Puesto:");
 	private JPanel buttonPane = new JPanel();
-	private JButton okButton = new JButton("OK");
+	private JButton okButton = new JButton("Alta");
 
 	public AltaTrabajador(Gestor gestor) {
 		inicializarGraficos();
 		handlers(gestor);
 	}
 	public void handlers(Gestor gestor) {
+		okButton.setToolTipText("");
 		okButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				gestor.addTrabajador(textDNI.getText(), textNombre.getText(), textApellidos.getText(), textDomicilio.getText(), datePickerNacimiento.getDate(), datePickerContrato.getDate(), textPuesto.getText());
@@ -56,10 +58,11 @@ public class AltaTrabajador extends JDialog {
 		
 	}
 	public void inicializarGraficos() {
-		setTitle("A\u00F1adir trabajador");
+		setTitle("Alta trabajador");
 		setResizable(false);
 		setBounds(100, 100, 347, 362);
 		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBackground(Color.WHITE);
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
@@ -116,6 +119,7 @@ public class AltaTrabajador extends JDialog {
 		contentPanel.add(textPuesto);
 		textPuesto.setColumns(10);
 		{
+			buttonPane.setBackground(Color.WHITE);
 
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);

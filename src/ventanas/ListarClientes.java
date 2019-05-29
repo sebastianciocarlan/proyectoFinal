@@ -12,7 +12,7 @@ import javax.swing.JTextPane;
 import java.awt.Color;
 import javax.swing.JScrollPane;
 
-public class MostrarClientes extends JDialog {
+public class ListarClientes extends JDialog {
 
 	/**
 	 * 
@@ -22,7 +22,8 @@ public class MostrarClientes extends JDialog {
 	private JTextPane textPane = new JTextPane();
 	private JScrollPane scrollPane = new JScrollPane();
 
-	public MostrarClientes(Gestor gestor) {
+	public ListarClientes(Gestor gestor) {
+		setTitle("Listar clientes");
 		setResizable(false);
 		inicializarGraficos();
 		setTextPaneText(gestor.listarClientes());
@@ -37,7 +38,7 @@ public class MostrarClientes extends JDialog {
 		contentPanel.setLayout(null);
 		
 
-		scrollPane.setBounds(10, 11, 769, 681);
+		scrollPane.setBounds(0, 0, 799, 747);
 		contentPanel.add(scrollPane);
 		textPane.setEditable(false);
 		scrollPane.setViewportView(textPane);

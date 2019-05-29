@@ -28,6 +28,7 @@ public class BorrarFactura extends JDialog {
 
 
 	public BorrarFactura(Gestor gestor) {
+		setTitle("Borrar Factura");
 		inicializarGraficos();
 		handlers(gestor);
 	}

@@ -31,15 +31,15 @@ public class VentanaPrincipal extends JFrame {
 	private JMenuItem mntmCargar = new JMenuItem("Cargar ");
 	private JMenuItem mntmGuardarFichero = new JMenuItem("Guardar ");
 	private JMenu mnBaseDeDatos = new JMenu("Base de datos");
-	private JButton btnAltaTrabajador = new JButton("Alta Trabajador");
-	private JButton btnAltaCliente = new JButton("Alta Cliente");
-	private JButton btnBorrarProducto = new JButton("Borrar Producto");
-	private JButton btnBorrarPersona = new JButton("Borrar Persona");
-	private JButton btnAadirProductoDrogueria = new JButton("A\u00F1adir Producto Drogueria");
-	private JButton btnAadirProductoAlimentacion = new JButton("A\u00F1adir Producto Alimentacion");
+	private JButton btnAltaTrabajador = new JButton("Alta trabajador");
+	private JButton btnAltaCliente = new JButton("Alta cliente");
+	private JButton btnBorrarProducto = new JButton("Borrar producto");
+	private JButton btnBorrarPersona = new JButton("Borrar persona");
+	private JButton btnAadirProductoDrogueria = new JButton("A\u00F1adir producto drogueria");
+	private JButton btnAadirProductoAlimentacion = new JButton("A\u00F1adir producto alimentacion");
 	private JButton btnMostrarProductos = new JButton("Mostrar productos");
-	private JButton btnModificarTrabajador = new JButton("Modificar Trabajador");
-	private JButton btnModificarCliente = new JButton("Modificar Cliente");
+	private JButton btnModificarTrabajador = new JButton("Modificar trabajador");
+	private JButton btnModificarCliente = new JButton("Modificar cliente");
 	private JButton btnAddFactura = new JButton("A\u00F1adir factura a cliente");
 	private JSeparator separator_1 = new JSeparator();
 	private JSeparator separator = new JSeparator();
@@ -51,8 +51,8 @@ public class VentanaPrincipal extends JFrame {
 	private final JButton btnModificarFactura = new JButton("Modificar factura");
 	private final JButton btnModAlimentacion = new JButton("Modificar alimentacion");
 	private final JButton btnModDrogueria = new JButton("Modificar drogueria");
-	private final JButton btnBuscarPersona = new JButton("Buscar Persona");
-	private final JButton btnBuscarProducto = new JButton("Buscar Producto");
+	private final JButton btnBuscarPersona = new JButton("Buscar persona");
+	private final JButton btnBuscarProducto = new JButton("Buscar producto");
 	private JMenuItem mntmCerrarBaseDatos = new JMenuItem("Cerrar base datos");
 
 	public VentanaPrincipal(Gestor gestor) {
@@ -117,7 +117,7 @@ public class VentanaPrincipal extends JFrame {
 		btnMostrarClientes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					MostrarClientes dialog = new MostrarClientes(gestor);
+					ListarClientes dialog = new ListarClientes(gestor);
 					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 					dialog.setVisible(true);
 				} catch (Exception f) {
@@ -212,7 +212,7 @@ public class VentanaPrincipal extends JFrame {
 		btnMostrarProductos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					MostrarProductos dialog = new MostrarProductos(gestor);
+					ListarProductos dialog = new ListarProductos(gestor);
 					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 					dialog.setVisible(true);
 				} catch (Exception f) {
@@ -225,7 +225,7 @@ public class VentanaPrincipal extends JFrame {
 		btnListarFacturas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					ListarFacturas dialog = new ListarFacturas(gestor);
+					ListarFacturasCliente dialog = new ListarFacturasCliente(gestor);
 					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 					dialog.setVisible(true);
 				} catch (Exception f) {
@@ -264,7 +264,7 @@ public class VentanaPrincipal extends JFrame {
 		btnMostrarTrabajadores.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					MostrarTrabajador dialog = new MostrarTrabajador(gestor);
+					ListarTrabajador dialog = new ListarTrabajador(gestor);
 					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 					dialog.setVisible(true);
 				} catch (Exception f) {
@@ -323,7 +323,7 @@ public class VentanaPrincipal extends JFrame {
 		btnAddFactura.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					CrearFactura dialog = new CrearFactura(gestor);
+					AltaFactura dialog = new AltaFactura(gestor);
 					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 					dialog.setVisible(true);
 				} catch (Exception f) {
@@ -339,7 +339,7 @@ public class VentanaPrincipal extends JFrame {
 		btnListarProductosFacturas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					ListarFacturasUsuario dialog = new ListarFacturasUsuario(gestor);
+					ListarFacturas dialog = new ListarFacturas(gestor);
 					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 					dialog.setVisible(true);
 				} catch (Exception f) {
@@ -361,7 +361,7 @@ public class VentanaPrincipal extends JFrame {
 	}
 
 	public void inicializarGraficos() {
-		setTitle("Marcadone");
+		setTitle("Mercadona pero mal");
 		setBackground(new Color(152, 251, 152));
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

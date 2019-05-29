@@ -18,6 +18,7 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.JCheckBox;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class AltaDrogueria extends JDialog {
 
@@ -38,7 +39,7 @@ public class AltaDrogueria extends JDialog {
 	private JCheckBox checkBoxEsImportado = new JCheckBox("Es Importado");
 	private JLabel lblTipo = new JLabel("Tipo :");
 	private JPanel buttonPane = new JPanel();
-	private JButton okButton = new JButton("OK");
+	private JButton okButton = new JButton("Alta");
 
 
 		
@@ -47,6 +48,7 @@ public class AltaDrogueria extends JDialog {
 	 * Create the dialog.
 	 */
 	public AltaDrogueria(Gestor gestor) {
+		setTitle("Alta drogueria");
 		inicializarGraficos();
 		handlers(gestor);
 
@@ -63,6 +65,7 @@ public class AltaDrogueria extends JDialog {
 		setResizable(false);
 		setBounds(100, 100, 296, 244);
 		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBackground(Color.WHITE);
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
@@ -109,6 +112,7 @@ public class AltaDrogueria extends JDialog {
 		contentPanel.add(textTipo);
 		textTipo.setColumns(10);
 		{
+			buttonPane.setBackground(Color.WHITE);
 
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);

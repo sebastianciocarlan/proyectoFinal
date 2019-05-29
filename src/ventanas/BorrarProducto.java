@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class BorrarProducto extends JDialog {
 
@@ -38,10 +39,11 @@ public class BorrarProducto extends JDialog {
 		});
 	}
 	public void inicializarGraficos() {
-		setTitle("Borrar persona");
+		setTitle("Borrar producto");
 		setResizable(false);
 		setBounds(100, 100, 364, 101);
 		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBackground(Color.WHITE);
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
@@ -57,6 +59,7 @@ public class BorrarProducto extends JDialog {
 			textCodBarras.setColumns(10);
 		}
 		{
+			buttonPane.setBackground(Color.WHITE);
 
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);

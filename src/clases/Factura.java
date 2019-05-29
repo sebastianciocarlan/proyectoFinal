@@ -4,9 +4,9 @@ package clases;
 
 public class Factura implements Comparable<Factura>{
 	
-	private String dependiente;
+	private String dniDependiente;
 	private String idFactura;
-	private String cliente;
+	private String dniCliente;
 
 	public String getIdFactura() {
 		return idFactura;
@@ -17,9 +17,9 @@ public class Factura implements Comparable<Factura>{
 	}
 
 	public Factura(String idFactura, String dependiente, String cliente) {
-		this.dependiente =  dependiente;
+		this.dniDependiente =  dependiente;
 		this.idFactura=idFactura;
-		this.cliente =  cliente;
+		this.dniCliente =  cliente;
 	}
 
 
@@ -28,7 +28,7 @@ public class Factura implements Comparable<Factura>{
 	
 	@Override
 	public String toString() {
-		return "Id factura: "+idFactura+" Dependiente: "+dependiente+" Cliente: "+cliente;
+		return "Id factura: "+idFactura+" Dependiente: "+dniDependiente+" Cliente: "+dniCliente;
 		
 	}
 	@Override
@@ -38,19 +38,19 @@ public class Factura implements Comparable<Factura>{
 	}
 
 	public String getDependiente() {
-		return dependiente;
+		return dniDependiente;
 	}
 
 	public void setDependiente(String dependiente) {
-		this.dependiente = dependiente;
+		this.dniDependiente = dependiente;
 	}
 
 	public String getCliente() {
-		return cliente;
+		return dniCliente;
 	}
 
 	public void setCliente(String cliente) {
-		this.cliente = cliente;
+		this.dniCliente = cliente;
 	}
 
 

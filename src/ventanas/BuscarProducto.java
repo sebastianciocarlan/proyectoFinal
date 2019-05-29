@@ -28,6 +28,7 @@ public class BuscarProducto extends JDialog {
 	private JTextArea textArea = new JTextArea();
 
 	public BuscarProducto(Gestor gestor) {
+		setTitle("Buscar producto");
 		inicializarGraficos();
 		handlers(gestor);
 	}
@@ -40,7 +41,7 @@ public class BuscarProducto extends JDialog {
 	}
 	public void inicializarGraficos() {
 		setResizable(false);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 450, 157);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBackground(Color.WHITE);
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -67,7 +68,7 @@ public class BuscarProducto extends JDialog {
 
 			textArea.setFont(new Font("Tahoma", Font.PLAIN, 11));
 			textArea.setEditable(false);
-			textArea.setBounds(10, 67, 424, 193);
+			textArea.setBounds(10, 67, 424, 41);
 			contentPanel.add(textArea);
 		}
 	}

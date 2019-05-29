@@ -25,6 +25,12 @@ CREATE TABLE LOGIN(
     user VARCHAR(20),
     password VARCHAR(20)
 );
+CREATE TABLE FACTURAS(
+	id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+	dniDependiente VARCHAR(9),
+	dniCliente VARCHAR(9),
+	idFactura VARCHAR(2)
+);
 insert into login (user,password) values ('darknnesilver','12345');
 INSERT INTO `TRABAJADORES` (`nombre`,`apellidos`,`domicilio`,`fechaNacimiento`,`fechaInicioContrato`,`puesto`,`dni`) 
 VALUES 

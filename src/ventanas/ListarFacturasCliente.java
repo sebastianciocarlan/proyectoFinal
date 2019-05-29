@@ -16,8 +16,9 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
-public class ListarFacturas extends JDialog {
+public class ListarFacturasCliente extends JDialog {
 
 
 	private static final long serialVersionUID = 5612853395117871603L;
@@ -29,7 +30,8 @@ public class ListarFacturas extends JDialog {
 	private final JButton btnBuscar = new JButton("Buscar");
 
 
-	public ListarFacturas(Gestor gestor) {
+	public ListarFacturasCliente(Gestor gestor) {
+		setTitle("Listar facturas cliente");
 		textDni.setBounds(10, 36, 133, 20);
 		textDni.setColumns(10);
 		inicializarGraficos();
@@ -48,11 +50,12 @@ public class ListarFacturas extends JDialog {
 		setResizable(false);
 		setBounds(100, 100, 608, 662);
 		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBackground(Color.WHITE);
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 
-		scrollPane.setBounds(10, 82, 582, 540);
+		scrollPane.setBounds(0, 82, 602, 552);
 		contentPanel.add(scrollPane);
 		{
 			textPane.setEditable(false);

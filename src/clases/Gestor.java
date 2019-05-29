@@ -228,13 +228,14 @@ public class Gestor {
 	 * @param fechaNacimiento
 	 *            modificada
 	 */
-	public void modCliente(String dni, String nombre, String apellidos, String domicilio, LocalDate fechaNacimiento) {
+	public void modCliente(String dni, String nombre, String apellidos, String domicilio, LocalDate fechaNacimiento,Boolean esVip) {
 		for (Persona cliente : personas) {
 			if (cliente.getDni().equals(dni)) {
 				cliente.setNombre(nombre);
 				cliente.setApellidos(apellidos);
 				cliente.setDomicilio(domicilio);
 				cliente.setFechaNacimiento(fechaNacimiento);
+				((Cliente) cliente).setEsVip(esVip);
 			}
 		}
 	}

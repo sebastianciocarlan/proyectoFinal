@@ -12,7 +12,7 @@ import javax.swing.JTextPane;
 import java.awt.Color;
 import javax.swing.JScrollPane;
 
-public class MostrarTrabajador extends JDialog {
+public class ListarTrabajador extends JDialog {
 
 	/**
 	 * 
@@ -22,7 +22,8 @@ public class MostrarTrabajador extends JDialog {
 	private JTextPane textPane = new JTextPane();
 	private JScrollPane scrollPane = new JScrollPane();
 
-	public MostrarTrabajador(Gestor gestor) {
+	public ListarTrabajador(Gestor gestor) {
+		setTitle("Listar trabajadores");
 		setResizable(false);
 		inicializarGraficos();
 		setTextPaneText(gestor.listarTrabajadores());
@@ -37,7 +38,7 @@ public class MostrarTrabajador extends JDialog {
 		contentPanel.setLayout(null);
 		
 
-		scrollPane.setBounds(10, 11, 769, 681);
+		scrollPane.setBounds(0, 0, 799, 747);
 		contentPanel.add(scrollPane);
 		textPane.setEditable(false);
 		scrollPane.setViewportView(textPane);

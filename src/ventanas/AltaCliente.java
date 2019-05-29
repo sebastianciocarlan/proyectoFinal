@@ -16,6 +16,7 @@ import clases.Gestor;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JCheckBox;
+import java.awt.Color;
 
 public class AltaCliente extends JDialog {
 
@@ -35,7 +36,7 @@ public class AltaCliente extends JDialog {
 	private DatePicker datePicker = new DatePicker();
 	private JLabel lblFechaDeNacimiento = new JLabel("Fecha de nacimiento:");
 	private JPanel buttonPane = new JPanel();
-	private JButton okButton = new JButton("OK");
+	private JButton okButton = new JButton("Alta");
 	private JCheckBox chckbxEsVip = new JCheckBox("Es VIP");
 	public AltaCliente(Gestor gestor) {
 		inicializarGraficos();
@@ -51,10 +52,11 @@ public class AltaCliente extends JDialog {
 
 	}
 	public void inicializarGraficos() {
-		setTitle("A\u00F1adir Cliente");
+		setTitle("Alta cliente");
 		setResizable(false);
 		setBounds(100, 100, 347, 295);
 		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBackground(Color.WHITE);
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
@@ -101,6 +103,7 @@ public class AltaCliente extends JDialog {
 		chckbxEsVip.setBounds(10, 184, 97, 23);
 		contentPanel.add(chckbxEsVip);
 		{
+			buttonPane.setBackground(Color.WHITE);
 
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);

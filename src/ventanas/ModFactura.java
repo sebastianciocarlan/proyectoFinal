@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class ModFactura extends JDialog {
 
@@ -25,7 +26,7 @@ public class ModFactura extends JDialog {
 	private final JTextField textTrabajador = new JTextField();
 	private final JTextField textFactura = new JTextField();
 	private final JLabel lblIdFactura = new JLabel("ID Factura:");
-	private final JButton btnCrearFactura = new JButton("Crear factura");
+	private final JButton btnCrearFactura = new JButton("Modificar");
 
 
 	public ModFactura(Gestor gestor) {
@@ -42,7 +43,7 @@ public class ModFactura extends JDialog {
 		});
 	}
 	public void inicializarGraficos() {
-		setTitle("Crear Factura");
+		setTitle("Modificar factura");
 		setResizable(false);
 		textFactura.setBounds(190, 36, 170, 20);
 		textFactura.setColumns(10);
@@ -52,6 +53,7 @@ public class ModFactura extends JDialog {
 		textCliente.setColumns(10);
 		setBounds(100, 100, 380, 168);
 		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBackground(Color.WHITE);
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);

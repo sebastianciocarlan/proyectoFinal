@@ -11,8 +11,9 @@ import clases.Gestor;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
+import java.awt.Color;
 
-public class ListarFacturasUsuario extends JDialog {
+public class ListarFacturas extends JDialog {
 
 
 	private static final long serialVersionUID = 5612853395117871603L;
@@ -21,7 +22,8 @@ public class ListarFacturasUsuario extends JDialog {
 	private final JTextPane textPane = new JTextPane();
 
 
-	public ListarFacturasUsuario(Gestor gestor) {
+	public ListarFacturas(Gestor gestor) {
+		setTitle("Listar facturas");
 		inicializarGraficos();
 		setTextPaneText(gestor.listarFacturas());
 	}
@@ -30,11 +32,12 @@ public class ListarFacturasUsuario extends JDialog {
 		setResizable(false);
 		setBounds(100, 100, 608, 662);
 		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBackground(Color.WHITE);
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 
-		scrollPane.setBounds(10, 11, 582, 611);
+		scrollPane.setBounds(0, 0, 602, 634);
 		contentPanel.add(scrollPane);
 		{
 			textPane.setEditable(false);

@@ -15,6 +15,8 @@ import com.github.lgooddatepicker.components.DatePicker;
 import clases.Gestor;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
+import javax.swing.JCheckBox;
 
 public class ModCliente extends JDialog {
 
@@ -35,6 +37,7 @@ public class ModCliente extends JDialog {
 	private JLabel lblFechaDeNacimiento = new JLabel("Fecha de nacimiento:");
 	private JPanel buttonPane = new JPanel();
 	private JButton okButton = new JButton("Modificar");
+	private JCheckBox chckbxEsVip = new JCheckBox("Es vip");
 	public ModCliente(Gestor gestor) {
 		inicializarGraficos();
 		handlers(gestor);
@@ -42,17 +45,18 @@ public class ModCliente extends JDialog {
 	public void handlers(Gestor gestor) {
 		okButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				gestor.modCliente(textDNI.getText(), textNombre.getText(), textApellidos.getText(), textDomicilio.getText(),datePicker.getDate() );
+				gestor.modCliente(textDNI.getText(), textNombre.getText(), textApellidos.getText(), textDomicilio.getText(),datePicker.getDate(),chckbxEsVip.isSelected() );
 				dispose();
 			}
 		});
 
 	}
 	public void inicializarGraficos() {
-		setTitle("Modificar Cliente");
+		setTitle("Modificar cliente");
 		setResizable(false);
-		setBounds(100, 100, 347, 252);
+		setBounds(100, 100, 347, 282);
 		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBackground(Color.WHITE);
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
@@ -94,7 +98,12 @@ public class ModCliente extends JDialog {
 
 		lblFechaDeNacimiento.setBounds(10, 132, 208, 14);
 		contentPanel.add(lblFechaDeNacimiento);
+		
+
+		chckbxEsVip.setBounds(10, 184, 97, 23);
+		contentPanel.add(chckbxEsVip);
 		{
+			buttonPane.setBackground(Color.WHITE);
 
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);

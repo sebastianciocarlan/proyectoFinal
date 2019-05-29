@@ -18,6 +18,7 @@ import clases.Gestor;
 import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class ModAlimentacion extends JDialog {
 	private static final long serialVersionUID = -8233413010934210986L;
@@ -40,6 +41,7 @@ public class ModAlimentacion extends JDialog {
 	private JPanel buttonPane = new JPanel();
 
 	public ModAlimentacion(Gestor gestor) {
+		setTitle("Modificar alimentacion");
 		inicializarGraficos();
 		handlers(gestor);
 	}
@@ -56,6 +58,7 @@ public class ModAlimentacion extends JDialog {
 		setResizable(false);
 		setBounds(100, 100, 428, 418);
 		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBackground(Color.WHITE);
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
@@ -106,11 +109,12 @@ public class ModAlimentacion extends JDialog {
 		contentPanel.add(datePicker);
 		contentPanel.add(lblPrecio);
 
-		textIngredientes.setBounds(20, 212, 392, 133);
+		textIngredientes.setBounds(0, 196, 422, 161);
 		contentPanel.add(textIngredientes);
 
 		lblIngredientes.setBounds(20, 179, 142, 14);
 		contentPanel.add(lblIngredientes);
+		buttonPane.setBackground(Color.WHITE);
 
 		buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		getContentPane().add(buttonPane, BorderLayout.SOUTH);
