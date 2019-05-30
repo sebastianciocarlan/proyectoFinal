@@ -1,9 +1,7 @@
 package clases;
 
+public class Factura implements Comparable<Factura> {
 
-
-public class Factura implements Comparable<Factura>{
-	
 	private String dniDependiente;
 	private String idFactura;
 	private String dniCliente;
@@ -16,21 +14,27 @@ public class Factura implements Comparable<Factura>{
 		this.idFactura = idFactura;
 	}
 
+	/**
+	 * Crea un objeto de tipo factura
+	 * 
+	 * @param idFactura   Id Alfanumerico de la factura
+	 * @param dependiente DNI del dependiente
+	 * @param cliente     Dni del cliente
+	 */
 	public Factura(String idFactura, String dependiente, String cliente) {
-		this.dniDependiente =  dependiente;
-		this.idFactura=idFactura;
-		this.dniCliente =  cliente;
+		this.dniDependiente = dependiente;
+		this.idFactura = idFactura;
+		this.dniCliente = cliente;
 	}
-
-
-	
-
-	
+	/**
+	 * Devuelve una factura con todos sus datos
+	 */
 	@Override
 	public String toString() {
-		return "Id factura: "+idFactura+" Dependiente: "+dniDependiente+" Cliente: "+dniCliente;
-		
+		return "Id factura: " + idFactura + " Dependiente: " + dniDependiente + " Cliente: " + dniCliente;
+
 	}
+
 	@Override
 	public int compareTo(Factura o) {
 		// TODO Auto-generated method stub
@@ -52,7 +56,5 @@ public class Factura implements Comparable<Factura>{
 	public void setCliente(String cliente) {
 		this.dniCliente = cliente;
 	}
-
-
 
 }

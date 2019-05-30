@@ -61,7 +61,7 @@ public class Gestor {
 	/**
 	 * Devuelve productos
 	 * 
-	 * @return Un string que contiene todos los trabajadores
+	 * @return Un string que contiene todos los productos
 	 */
 	public String listarProductos() {
 		String aux = "";
@@ -87,9 +87,9 @@ public class Gestor {
 	}
 
 	/**
-	 * muestra todas las facturas
+	 * Muestra todas las facturas
 	 * 
-	 * @return
+	 * @return Devuelve un string con el toString de las facturas.
 	 */
 	public String listarFacturas() {
 		String aux = "";
@@ -100,10 +100,10 @@ public class Gestor {
 	}
 
 	/**
-	 * muestra facturas de un cliente
+	 * Muestra facturas de un cliente
 	 * 
-	 * @param dniCliente
-	 * @return
+	 * @param dniCliente dni del cliente a buscar las facturas
+	 * @return Devuelve un string con las facturas de un cliente.
 	 */
 	public String listarFacturasCliente(String dniCliente) {
 		String aux = "";
@@ -116,16 +116,17 @@ public class Gestor {
 	}
 
 	/**
-	 * A�ade un trabajador a la lista de personas, especificando una fecha de
-	 * inicio de contrato
+	 * A�ade un trabajador a la lista de personas, especificando una fecha de inicio
+	 * de contrato
 	 * 
-	 * @param dni
-	 * @param nombre
-	 * @param apellidos
-	 * @param domicilio
-	 * @param fechaNacimiento
-	 * @param fechaInicioContrato
-	 * @param puesto
+	 * @param dni                 Dni intorducido en formato XXXXXXXXXL o NIE en
+	 *                            formato LXXXXXXXXL
+	 * @param nombre              Nombre de pila
+	 * @param apellidos           Apellidos
+	 * @param domicilio           Domicilio completo ( Calle / Avenida incluido)
+	 * @param fechaNacimiento     Fecha de nacimiento en formato LocalDate
+	 * @param fechaInicioContrato Fecha de inicio contrato en formato LocalDate
+	 * @param puesto              Puesto del trabajador
 	 */
 	public void addTrabajador(String dni, String nombre, String apellidos, String domicilio, LocalDate fechaNacimiento,
 			LocalDate fechaInicioContrato, String puesto) {
@@ -136,11 +137,13 @@ public class Gestor {
 	/**
 	 * Anyade un cliente a la lista de personas
 	 * 
-	 * @param dni
-	 * @param nombre
-	 * @param apellidos
-	 * @param domicilio
-	 * @param fechaNacimiento
+	 * @param dni             Dni intorducido en formato XXXXXXXXXL o NIE en formato
+	 *                        LXXXXXXXXL
+	 * @param nombre          Nombre de pila
+	 * @param apellidos       Apellidos
+	 * @param domicilio       Domicilio completo ( Calle / Avenida incluido)
+	 * @param fechaNacimiento Fecha de nacimiento en formato LocalDate
+	 * @param esVip           Boolean que almacena si es vip
 	 */
 
 	public void addCliente(String dni, String nombre, String apellidos, String domicilio, LocalDate fechaNacimiento,
@@ -152,13 +155,13 @@ public class Gestor {
 	/**
 	 * A�ade un producto de tipo alimentacion
 	 * 
-	 * @param precio
-	 * @param marca
-	 * @param nombreProducto
-	 * @param codigoBarras
-	 * @param alergenos
-	 * @param ingredientes
-	 * @param fechaCaducidad
+	 * @param precio         Precio del producto
+	 * @param marca          Marca del producto
+	 * @param nombreProducto Nombre del producto
+	 * @param codigoBarras   Codigo de barras alfanumerico del producto
+	 * @param alergenos      Alergenos del producto alimentario
+	 * @param ingredientes   Ingredientes principales del producto
+	 * @param fechaCaducidad Fecha de caducidad del producto indicado en LocalDate
 	 */
 	public void addAlimentacion(double precio, String marca, String nombreProducto, String codigoBarras,
 			String alergenos, String ingredientes, LocalDate fechaCaducidad) {
@@ -170,12 +173,12 @@ public class Gestor {
 	/**
 	 * A�ade un producto de tipo drogueria
 	 * 
-	 * @param precio
-	 * @param marca
-	 * @param nombreProducto
-	 * @param codigoBarras
-	 * @param tipo
-	 * @param esImportado
+	 * @param precio         Precio del producto
+	 * @param marca          Marca del producto
+	 * @param nombreProducto Nombre del producto
+	 * @param codigoBarras   Codigo de barras alfanumerico del producto
+	 * @param tipo           Tipo del producto (Champu,gel,colonia...)
+	 * @param esImportado    True si es importado, false si no.
 	 */
 	public void addDrogueria(double precio, String marca, String nombreProducto, String codigoBarras, String tipo,
 			boolean esImportado) {
@@ -184,11 +187,11 @@ public class Gestor {
 	}
 
 	/**
-	 * crea una factura
+	 * Crea una factura y la añade al ArrayList
 	 * 
-	 * @param dniCliente
-	 * @param dniDependiente
-	 * @param idFactura
+	 * @param dniCliente     Dni del cliente
+	 * @param dniDependiente Dni del dependiente
+	 * @param idFactura      Id alfanumerico de la factura
 	 */
 	public void addFactura(String dniCliente, String dniDependiente, String idFactura) {
 
@@ -198,17 +201,17 @@ public class Gestor {
 	}
 
 	/**
-	 * modifica una factura
+	 * Modifica una factura
 	 * 
-	 * @param cliente
-	 * @param trabajador
-	 * @param factura
+	 * @param dniCliente    Dni del cliente a modificar
+	 * @param dniTrabajador Dni del trabajador a modificar
+	 * @param idFactura     idFactura de la factura
 	 */
-	public void modFactura(String cliente, String trabajador, String factura) {
+	public void modFactura(String dniCliente, String dniTrabajador, String idFactura) {
 		for (Factura fact : facturas) {
-			if (fact.getIdFactura().equals(factura)) {
-				fact.setCliente(cliente);
-				fact.setDependiente(trabajador);
+			if (fact.getIdFactura().equals(idFactura)) {
+				fact.setCliente(dniCliente);
+				fact.setDependiente(dniTrabajador);
 
 			}
 		}
@@ -217,18 +220,15 @@ public class Gestor {
 	/**
 	 * Modifica un cliente indicando un dni
 	 * 
-	 * @param dni
-	 *            de la persona a buscar
-	 * @param nombre
-	 *            modificado
-	 * @param apellidos
-	 *            modificados
-	 * @param domicilio
-	 *            modificado
-	 * @param fechaNacimiento
-	 *            modificada
+	 * @param dni             de la persona a buscar
+	 * @param nombre          modificado
+	 * @param apellidos       modificados
+	 * @param domicilio       modificado
+	 * @param fechaNacimiento modificada
+	 * @param esVip           modificado
 	 */
-	public void modCliente(String dni, String nombre, String apellidos, String domicilio, LocalDate fechaNacimiento,Boolean esVip) {
+	public void modCliente(String dni, String nombre, String apellidos, String domicilio, LocalDate fechaNacimiento,
+			Boolean esVip) {
 		for (Persona cliente : personas) {
 			if (cliente.getDni().equals(dni)) {
 				cliente.setNombre(nombre);
@@ -243,14 +243,14 @@ public class Gestor {
 	/**
 	 * Modifica un trabajador indicando un dni
 	 * 
-	 * @param dni
-	 * @param nombre
-	 * @param apellidos
-	 * @param domicilio
-	 * @param fechaNacimiento
-	 * @param puesto
+	 * @param dni                 Dni por el cual se busca
+	 * @param nombre              Nombre del trabajador modificado
+	 * @param apellidos           Apellidos del trabajador modificado
+	 * @param domicilio           Domicilio modificado del trabajador
+	 * @param fechaNacimiento     Fecha nacimiento en LocalDate modificado
+	 * @param puesto              Puesto modificado
+	 * @param fechaInicioContrato Fecha de inicio de contrato
 	 */
-
 	public void modTrabajador(String dni, String nombre, String apellidos, String domicilio, LocalDate fechaNacimiento,
 			LocalDate fechaInicioContrato, String puesto) {
 		for (Persona trabajador : personas) {
@@ -266,15 +266,15 @@ public class Gestor {
 	}
 
 	/**
-	 * modifica un producto de alimentacion
+	 * Modifica un producto de alimentacion
 	 * 
-	 * @param codigoBarras
-	 * @param marca
-	 * @param nombreProducto
-	 * @param precio
-	 * @param alergenos
-	 * @param fechaCaducidad
-	 * @param ingredientes
+	 * @param codigoBarras   codigo barras por el cual se busca
+	 * @param marca          Marca modificad
+	 * @param nombreProducto Nombre producto modificado
+	 * @param precio         Precio double modificado
+	 * @param alergenos      Alergenos modificados
+	 * @param fechaCaducidad Fecha caducidad modificada
+	 * @param ingredientes   Ingredientes modificados
 	 */
 	public void modAlimentacion(String codigoBarras, String marca, String nombreProducto, double precio,
 			String alergenos, LocalDate fechaCaducidad, String ingredientes) {
@@ -293,12 +293,12 @@ public class Gestor {
 	/**
 	 * modifica un producto de drogueria
 	 * 
-	 * @param codigoBarras
-	 * @param marca
-	 * @param nombreProducto
-	 * @param precio
-	 * @param esImportado
-	 * @param tipo
+	 * @param codigoBarras   codigo barras por el cual se busca
+	 * @param marca          Marca modificad
+	 * @param nombreProducto Nombre producto modificado
+	 * @param precio         Precio double modificado
+	 * @param esImportado    Boolean esImportado modificado
+	 * @param tipo           Tipo de producto de drogueria modificado
 	 */
 	public void modDrogueria(String codigoBarras, String marca, String nombreProducto, double precio,
 			boolean esImportado, String tipo) {
@@ -316,7 +316,7 @@ public class Gestor {
 	/**
 	 * Busca una persona en el arraylist y la devuelve
 	 * 
-	 * @param dni
+	 * @param dni Dni de la persona a buscar
 	 * @return devuelve una persona (Objeto)
 	 */
 	public Persona buscarPersona(String dni) {
@@ -332,7 +332,7 @@ public class Gestor {
 	/**
 	 * Busca un producto en el arraylist y la devuelve
 	 * 
-	 * @param codigoBarras
+	 * @param codigoBarras Codigo de barras del producto a buscar
 	 * @return devuelve un producto (Objeto)
 	 */
 	public Producto buscarProducto(String codigoBarras) {
@@ -348,7 +348,7 @@ public class Gestor {
 	/**
 	 * Borra una persona de la lista de personas
 	 * 
-	 * @param dni
+	 * @param dni Dni de la persona a eliminar
 	 */
 	public void delPersona(String dni) {
 		personas.remove(buscarPersona(dni));
@@ -358,7 +358,7 @@ public class Gestor {
 	/**
 	 * Borra un producto por su codigo de barras
 	 * 
-	 * @param codBarras
+	 * @param codBarras CodBarras del producto a eliminar
 	 */
 	public void delProducto(String codBarras) {
 		productos.remove(buscarProducto(codBarras));
@@ -368,7 +368,7 @@ public class Gestor {
 	/**
 	 * Borra una factura
 	 * 
-	 * @param idFactura
+	 * @param idFactura idFactura a eliminar
 	 */
 	public void delFactura(String idFactura) {
 		for (Factura factura : facturas) {
@@ -424,9 +424,10 @@ public class Gestor {
 	/**
 	 * Comprueba si el login introducido es correcto
 	 * 
-	 * @param usuario
-	 * @param contrase�a
-	 * @return
+	 * @param usuario    Usuario dentro de la base de datos para el login
+	 * @param contrasena Contrasena del usuario dentro de la base de datos
+	 * @return devuelve true si el usuario y la contrasena se encuentran en la base
+	 *         de datos
 	 */
 	public boolean comprobarLogin(String usuario, String contrasena) {
 		String sentencia = "SELECT user, password from login";
@@ -437,9 +438,9 @@ public class Gestor {
 				if (resultado.getString(1).equals(usuario) && resultado.getString(2).equals(contrasena)) {
 					return true;
 				}
-			
-		}
-			} catch (SQLException e) {
+
+			}
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return false;
@@ -448,8 +449,8 @@ public class Gestor {
 	/**
 	 * Devuelve si ya hay un cliente con el dni en la base de datos
 	 * 
-	 * @param dni
-	 * @return
+	 * @param dni Dni del cliente a buscar
+	 * @return Devuelve boolean en funcion si lo encuentra en la base de datos o no
 	 */
 	public boolean comprobarDniCliente(String dni) {
 		String sentencia = "SELECT dni from clientes";
@@ -470,8 +471,8 @@ public class Gestor {
 	/**
 	 * Deveuelve si ya hay un trabajador con el dni indicado en la base de datos
 	 * 
-	 * @param dni
-	 * @return
+	 * @param dni Dni del trabajador a buscar
+	 * @return Devuelve boolean en funcion si lo encuentra en la base de datos o no
 	 */
 	public boolean comprobarDniTrabajador(String dni) {
 		String sentencia = "SELECT dni from trabajadores";
@@ -542,6 +543,11 @@ public class Gestor {
 		}
 	}
 
+	/**
+	 * Almacena en un archivo los datos de los arraylist
+	 * 
+	 * @param archivo que es devuelto con los datos introducidos
+	 */
 	public void guardarFichero(File archivo) {
 		try {
 			ObjectOutputStream ser = new ObjectOutputStream(new FileOutputStream(archivo));
@@ -556,6 +562,11 @@ public class Gestor {
 		}
 	}
 
+	/**
+	 * Carga un archivo y lo introduce en los arraylist
+	 * 
+	 * @param archivo El archivo que introduces para que cargue en los arraylist
+	 */
 	@SuppressWarnings("unchecked")
 	public void cargarFichero(File archivo) {
 		try {

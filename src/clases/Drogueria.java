@@ -9,13 +9,25 @@ public class Drogueria extends Producto {
 	private String tipo;
 	private boolean esImportado;
 
+	/**
+	 * Crea un elemento de tipo drogueria
+	 * 
+	 * @param precio         Precio del producto
+	 * @param marca          Marcad del producto
+	 * @param nombreProducto Nombre del producto
+	 * @param codigoBarras   Codigo de barras del producto
+	 * @param tipo           Tipo del producto
+	 * @param esImportado    boolean que indica si es importado o no
+	 */
 	public Drogueria(double precio, String marca, String nombreProducto, String codigoBarras, String tipo,
 			boolean esImportado) {
 		super(precio, marca, nombreProducto, codigoBarras);
 		this.tipo = tipo;
 		this.esImportado = esImportado;
 	}
-
+	/**
+	 * Devuelve un producto de drogueria con todos sus elementos.
+	 */
 	@Override
 	public String toString() {
 		return "Drogueria " + tipo + " EsImportado: " + esImportado + " " + codigoBarras + ' ' + marca + ' '
