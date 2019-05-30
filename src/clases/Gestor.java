@@ -116,7 +116,7 @@ public class Gestor {
 	}
 
 	/**
-	 * Añade un trabajador a la lista de personas, especificando una fecha de
+	 * Aï¿½ade un trabajador a la lista de personas, especificando una fecha de
 	 * inicio de contrato
 	 * 
 	 * @param dni
@@ -150,7 +150,7 @@ public class Gestor {
 	}
 
 	/**
-	 * Añade un producto de tipo alimentacion
+	 * Aï¿½ade un producto de tipo alimentacion
 	 * 
 	 * @param precio
 	 * @param marca
@@ -168,7 +168,7 @@ public class Gestor {
 	}
 
 	/**
-	 * Añade un producto de tipo drogueria
+	 * Aï¿½ade un producto de tipo drogueria
 	 * 
 	 * @param precio
 	 * @param marca
@@ -425,20 +425,21 @@ public class Gestor {
 	 * Comprueba si el login introducido es correcto
 	 * 
 	 * @param usuario
-	 * @param contraseña
+	 * @param contraseï¿½a
 	 * @return
 	 */
-	public boolean comprobarLogin(String usuario, String contraseña) {
+	public boolean comprobarLogin(String usuario, String contrasena) {
 		String sentencia = "SELECT user, password from login";
 		try {
 			PreparedStatement sentenciaStat = conexionBD.prepareStatement(sentencia);
 			ResultSet resultado = sentenciaStat.executeQuery();
 			while (resultado.next()) {
-				if (resultado.getString(1).equals(usuario) && resultado.getString(2).equals(contraseña)) {
+				if (resultado.getString(1).equals(usuario) && resultado.getString(2).equals(contrasena)) {
 					return true;
 				}
-			}
-		} catch (SQLException e) {
+			
+		}
+			} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return false;
