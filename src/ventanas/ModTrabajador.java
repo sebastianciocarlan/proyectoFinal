@@ -41,12 +41,16 @@ public class ModTrabajador extends JDialog {
 	private JLabel lblPuesto = new JLabel("Puesto:");
 	private JPanel buttonPane = new JPanel();
 	private JButton okButton = new JButton("Modificar");
-
+	/**
+	 * Crea el JDialog.
+	 * 
+	 * @param gestor El gestor del programa
+	 */
 	public ModTrabajador(Gestor gestor) {
 		inicializarGraficos();
 		handlers(gestor);
 	}
-	public void handlers(Gestor gestor) {
+	private void handlers(Gestor gestor) {
 		okButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				gestor.modTrabajador(textDNI.getText(), textNombre.getText(), textApellidos.getText(), textDomicilio.getText(), datePickerNacimiento.getDate(), datePickerContrato.getDate(), textPuesto.getText());
@@ -55,7 +59,7 @@ public class ModTrabajador extends JDialog {
 		});
 		
 	}
-	public void inicializarGraficos() {
+	private void inicializarGraficos() {
 		setTitle("Modificar trabajador");
 		setResizable(false);
 		setBounds(100, 100, 347, 362);

@@ -42,79 +42,7 @@ public class Gestor {
 		facturas = new ArrayList<Factura>();
 	}
 
-	/**
-	 * 
-	 * Devuelve trabjadores
-	 * 
-	 * @return Un string que contiene todos los trabajadores.
-	 */
-	public String listarTrabajadores() {
-		String aux = "";
-		for (Persona trabajador : personas) {
-			if (trabajador instanceof Trabajador) {
-				aux = aux + "\n" + trabajador.toString();
-			}
-		}
-		return aux;
-	}
-
-	/**
-	 * Devuelve productos
-	 * 
-	 * @return Un string que contiene todos los productos
-	 */
-	public String listarProductos() {
-		String aux = "";
-		for (Producto producto : productos) {
-			aux = aux + "\n" + producto.toString();
-		}
-		return aux;
-	}
-
-	/**
-	 * Devuelve clientes
-	 * 
-	 * @return Un string que contiene todos los clientes
-	 */
-	public String listarClientes() {
-		String aux = "";
-		for (Persona cliente : personas) {
-			if (cliente instanceof Cliente) {
-				aux = aux + "\n" + cliente.toString();
-			}
-		}
-		return aux;
-	}
-
-	/**
-	 * Muestra todas las facturas
-	 * 
-	 * @return Devuelve un string con el toString de las facturas.
-	 */
-	public String listarFacturas() {
-		String aux = "";
-		for (Factura factura : facturas) {
-			aux = aux + "\n" + factura.toString();
-		}
-		return aux;
-	}
-
-	/**
-	 * Muestra facturas de un cliente
-	 * 
-	 * @param dniCliente dni del cliente a buscar las facturas
-	 * @return Devuelve un string con las facturas de un cliente.
-	 */
-	public String listarFacturasCliente(String dniCliente) {
-		String aux = "";
-		for (Factura factura : facturas) {
-			if (factura.getCliente().equals(dniCliente)) {
-				aux = aux + factura.toString();
-			}
-		}
-		return aux;
-	}
-
+	
 	/**
 	 * A�ade un trabajador a la lista de personas, especificando una fecha de inicio
 	 * de contrato
@@ -580,6 +508,30 @@ public class Gestor {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public ArrayList<Persona> getPersonas() {
+		return personas;
+	}
+
+	public void setPersonas(ArrayList<Persona> personas) {
+		this.personas = personas;
+	}
+
+	public ArrayList<Producto> getProductos() {
+		return productos;
+	}
+
+	public void setProductos(ArrayList<Producto> productos) {
+		this.productos = productos;
+	}
+
+	public ArrayList<Factura> getFacturas() {
+		return facturas;
+	}
+
+	public void setFacturas(ArrayList<Factura> facturas) {
+		this.facturas = facturas;
 	}
 
 }

@@ -54,13 +54,20 @@ public class VentanaPrincipal extends JFrame {
 	private final JButton btnBuscarPersona = new JButton("Buscar persona");
 	private final JButton btnBuscarProducto = new JButton("Buscar producto");
 	private JMenuItem mntmCerrarBaseDatos = new JMenuItem("Cerrar base datos");
-
+	private JButton btnMostrarPersonas;
+	private JButton btnMostrarDrogueria;
+	private JButton btnMostrarAlimentacion;
+	/**
+	 * Crea la ventana principal.
+	 * 
+	 * @param gestor El gestor del programa
+	 */
 	public VentanaPrincipal(Gestor gestor) {
 		inicializarGraficos();
 		handlers(gestor);
 	}
 
-	public void handlers(Gestor gestor) {
+	private void handlers(Gestor gestor) {
 		btnModificarTrabajador.setBackground(Color.WHITE);
 		btnModificarTrabajador.setForeground(Color.BLACK);
 		btnModificarTrabajador.addActionListener(new ActionListener() {
@@ -358,14 +365,47 @@ public class VentanaPrincipal extends JFrame {
 				}
 			}
 		});
+		btnMostrarPersonas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					ListarPersonas dialog = new ListarPersonas(gestor);
+					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+				} catch (Exception f) {
+					f.printStackTrace();
+				}
+			}
+		});
+		btnMostrarAlimentacion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					ListarAlimentacion dialog = new ListarAlimentacion(gestor);
+					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+				} catch (Exception f) {
+					f.printStackTrace();
+				}
+			}
+		});
+		btnMostrarDrogueria.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					ListarDrogueria dialog = new ListarDrogueria(gestor);
+					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+				} catch (Exception f) {
+					f.printStackTrace();
+				}
+			}
+		});
 	}
 
-	public void inicializarGraficos() {
+	private void inicializarGraficos() {
 		setTitle("Mercadona pero mal");
 		setBackground(new Color(152, 251, 152));
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 454, 690);
+		setBounds(100, 100, 454, 818);
 		menuBar.setBackground(Color.WHITE);
 		setJMenuBar(menuBar);
 		mnArchivo.setBackground(Color.WHITE);
@@ -405,15 +445,15 @@ public class VentanaPrincipal extends JFrame {
 		btnBorrarPersona.setBounds(10, 27, 210, 23);
 		contentPane.add(btnBorrarPersona);
 		
-		btnBorrarProducto.setBounds(10, 285, 210, 23);
+		btnBorrarProducto.setBounds(10, 489, 210, 23);
 		contentPane.add(btnBorrarProducto);
 
-		btnAadirProductoDrogueria.setBounds(10, 421, 428, 23);
+		btnAadirProductoDrogueria.setBounds(10, 453, 428, 23);
 		contentPane.add(btnAadirProductoDrogueria);
 
-		btnAadirProductoAlimentacion.setBounds(10, 387, 428, 23);
+		btnAadirProductoAlimentacion.setBounds(10, 419, 428, 23);
 		contentPane.add(btnAadirProductoAlimentacion);
-		separator.setBounds(10, 272, 428, 2);
+		separator.setBounds(10, 304, 428, 2);
 		contentPane.add(separator);
 
 		btnModificarTrabajador.setBounds(10, 129, 428, 23);
@@ -426,7 +466,7 @@ public class VentanaPrincipal extends JFrame {
 		btnAddFactura.setForeground(Color.BLACK);
 		btnAddFactura.setBounds(8, 606, 430, 23);
 		contentPane.add(btnAddFactura);
-		separator_1.setBounds(10, 455, 428, 2);
+		separator_1.setBounds(10, 557, 428, 2);
 		contentPane.add(separator_1);
 
 		btnEliminarFactura.setBounds(10, 570, 428, 23);
@@ -435,16 +475,16 @@ public class VentanaPrincipal extends JFrame {
 		btnMostrarClientes.setBounds(10, 197, 428, 23);
 		contentPane.add(btnMostrarClientes);
 
-		btnMostrarProductos.setBounds(10, 319, 428, 23);
+		btnMostrarProductos.setBounds(10, 351, 428, 23);
 		contentPane.add(btnMostrarProductos);
 
-		btnListarFacturas.setBounds(10, 536, 428, 23);
+		btnListarFacturas.setBounds(10, 708, 428, 23);
 		
 		contentPane.add(btnListarFacturas);
 
 		btnListarProductosFacturas.setBackground(Color.WHITE);
 		btnListarProductosFacturas.setForeground(Color.BLACK);
-		btnListarProductosFacturas.setBounds(10, 502, 428, 23);
+		btnListarProductosFacturas.setBounds(10, 674, 428, 23);
 		
 		contentPane.add(btnListarProductosFacturas);
 
@@ -454,15 +494,15 @@ public class VentanaPrincipal extends JFrame {
 
 		btnModificarFactura.setBackground(Color.WHITE);
 		btnModificarFactura.setForeground(Color.BLACK);
-		btnModificarFactura.setBounds(10, 468, 428, 23);
+		btnModificarFactura.setBounds(10, 640, 428, 23);
 		
 		contentPane.add(btnModificarFactura);
 
-		btnModAlimentacion.setBounds(10, 353, 210, 23);
+		btnModAlimentacion.setBounds(10, 523, 210, 23);
 		
 		contentPane.add(btnModAlimentacion);
 
-		btnModDrogueria.setBounds(228, 353, 210, 23);
+		btnModDrogueria.setBounds(230, 523, 210, 23);
 		
 		contentPane.add(btnModDrogueria);
 
@@ -472,8 +512,29 @@ public class VentanaPrincipal extends JFrame {
 		contentPane.add(btnBuscarPersona);
 
 		btnBuscarProducto.setBackground(Color.WHITE);
-		btnBuscarProducto.setBounds(230, 285, 208, 23);
+		btnBuscarProducto.setBounds(230, 489, 208, 23);
 		
 		contentPane.add(btnBuscarProducto);
+		
+		btnMostrarAlimentacion = new JButton("Mostrar alimentacion");
+
+		btnMostrarAlimentacion.setForeground(Color.BLACK);
+		btnMostrarAlimentacion.setBackground(Color.WHITE);
+		btnMostrarAlimentacion.setBounds(10, 317, 428, 23);
+		contentPane.add(btnMostrarAlimentacion);
+		
+		btnMostrarDrogueria = new JButton("Mostrar drogueria");
+
+		btnMostrarDrogueria.setForeground(Color.BLACK);
+		btnMostrarDrogueria.setBackground(Color.WHITE);
+		btnMostrarDrogueria.setBounds(10, 385, 428, 23);
+		contentPane.add(btnMostrarDrogueria);
+		
+		btnMostrarPersonas = new JButton("Mostrar personas");
+
+		btnMostrarPersonas.setForeground(Color.BLACK);
+		btnMostrarPersonas.setBackground(Color.WHITE);
+		btnMostrarPersonas.setBounds(10, 265, 428, 23);
+		contentPane.add(btnMostrarPersonas);
 	}
 }

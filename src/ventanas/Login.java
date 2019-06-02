@@ -29,14 +29,16 @@ public class Login extends JDialog {
 	private JButton okButton = new JButton("OK");
 	private JTextPane txtpnLoginError = new JTextPane();
 	/**
-	 * Create the dialog.
+	 * Crea el JDialog.
+	 * 
+	 * @param gestor El gestor del programa
 	 */
 	public Login(Gestor gestor) {
 		inicializarGraficos();
 		handlers(gestor);
 	}
 	
-	public void handlers(Gestor gestor) {
+	 private void handlers(Gestor gestor) {
 		okButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				gestor.conectarBaseDatos();
@@ -60,7 +62,7 @@ public class Login extends JDialog {
 		});
 	}
 
-	public void inicializarGraficos() {
+	private void inicializarGraficos() {
 		setResizable(false);
 		setTitle("Login");
 		setBounds(100, 100, 242, 150);

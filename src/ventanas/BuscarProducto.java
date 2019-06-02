@@ -26,20 +26,24 @@ public class BuscarProducto extends JDialog {
 	private JLabel lblcodBarras = new JLabel("Codigo Barras:");
 	private JButton btnBuscar = new JButton("Buscar");
 	private JTextArea textArea = new JTextArea();
-
+	/**
+	 * Crea el JDialog.
+	 * 
+	 * @param gestor El gestor del programa
+	 */
 	public BuscarProducto(Gestor gestor) {
 		setTitle("Buscar producto");
 		inicializarGraficos();
 		handlers(gestor);
 	}
-	public void handlers(Gestor gestor) {
+	private void handlers(Gestor gestor) {
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textArea.setText(gestor.buscarProducto(textCodBarras.getText()).toString());
 			}
 		});
 	}
-	public void inicializarGraficos() {
+	private void inicializarGraficos() {
 		setResizable(false);
 		setBounds(100, 100, 450, 157);
 		getContentPane().setLayout(new BorderLayout());

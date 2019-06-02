@@ -41,11 +41,10 @@ public class AltaDrogueria extends JDialog {
 	private JPanel buttonPane = new JPanel();
 	private JButton okButton = new JButton("Alta");
 
-
-		
-
 	/**
-	 * Create the dialog.
+	 * Crea el JDialog.
+	 * 
+	 * @param gestor El gestor del programa
 	 */
 	public AltaDrogueria(Gestor gestor) {
 		setTitle("Alta drogueria");
@@ -53,15 +52,18 @@ public class AltaDrogueria extends JDialog {
 		handlers(gestor);
 
 	}
-	public void handlers(Gestor gestor) {
+
+	private void handlers(Gestor gestor) {
 		okButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				gestor.addDrogueria((int)spinnerPrecio.getValue(), textMarca.getText(), textNombre.getText(), textCodigoBarras.getText(), textTipo.getText(), checkBoxEsImportado.isSelected());
+				gestor.addDrogueria((double) spinnerPrecio.getValue(), textMarca.getText(), textNombre.getText(),
+						textCodigoBarras.getText(), textTipo.getText(), checkBoxEsImportado.isSelected());
 				dispose();
 			}
 		});
 	}
-	public void inicializarGraficos() {
+
+	private void inicializarGraficos() {
 		setResizable(false);
 		setBounds(100, 100, 296, 244);
 		getContentPane().setLayout(new BorderLayout());
@@ -117,7 +119,6 @@ public class AltaDrogueria extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-	
 
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);

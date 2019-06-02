@@ -40,21 +40,30 @@ public class AltaAlimentacion extends JDialog {
 	private JButton okButton = new JButton("Alta");
 	private JPanel buttonPane = new JPanel();
 
+	/**
+	 * Crea el JDialog.
+	 * 
+	 * @param gestor El gestor del programa
+	 */
 	public AltaAlimentacion(Gestor gestor) {
 		setTitle("Alta alimentacion");
 		inicializarGraficos();
 		handlers(gestor);
 	}
-	public void handlers (Gestor gestor) {
+
+	private void handlers(Gestor gestor) {
 		okButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				gestor.addAlimentacion((int)spinnerPrecio.getValue(), textMarca.getText(), textNombre.getText(), textCodigoBarras.getText(), textAlergenos.getText(), textIngredientes.getText(), datePicker.getDate());
+				gestor.addAlimentacion((double) spinnerPrecio.getValue(), textMarca.getText(), textNombre.getText(),
+						textCodigoBarras.getText(), textAlergenos.getText(), textIngredientes.getText(),
+						datePicker.getDate());
 				dispose();
 			}
 		});
-		
+
 	}
-	public void inicializarGraficos() {
+
+	private void inicializarGraficos() {
 		setResizable(false);
 		setBounds(100, 100, 428, 418);
 		getContentPane().setLayout(new BorderLayout());
@@ -118,7 +127,6 @@ public class AltaAlimentacion extends JDialog {
 
 		buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		getContentPane().add(buttonPane, BorderLayout.SOUTH);
-
 
 		okButton.setActionCommand("OK");
 		buttonPane.add(okButton);

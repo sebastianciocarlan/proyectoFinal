@@ -24,20 +24,24 @@ public class BuscarPersona extends JDialog {
 	private JLabel lblDNI = new JLabel("DNI:");
 	private JButton btnBuscar = new JButton("Buscar");
 	private JTextArea textArea = new JTextArea();
-
+	/**
+	 * Crea el JDialog.
+	 * 
+	 * @param gestor El gestor del programa
+	 */
 	public BuscarPersona(Gestor gestor) {
 		setTitle("Buscar persona");
 		inicializarGraficos();
 		handlers(gestor);
 	}
-	public void handlers(Gestor gestor) {
+	private void handlers(Gestor gestor) {
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textArea.setText(gestor.buscarPersona(textDni.getText()).toString());
 			}
 		});
 	}
-	public void inicializarGraficos() {
+	private void inicializarGraficos() {
 		setResizable(false);
 		setBounds(100, 100, 450, 152);
 		getContentPane().setLayout(new BorderLayout());

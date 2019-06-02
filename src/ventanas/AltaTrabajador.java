@@ -41,12 +41,16 @@ public class AltaTrabajador extends JDialog {
 	private JLabel lblPuesto = new JLabel("Puesto:");
 	private JPanel buttonPane = new JPanel();
 	private JButton okButton = new JButton("Alta");
-
+	/**
+	 * Crea el JDialog.
+	 * 
+	 * @param gestor El gestor del programa
+	 */
 	public AltaTrabajador(Gestor gestor) {
 		inicializarGraficos();
 		handlers(gestor);
 	}
-	public void handlers(Gestor gestor) {
+	private void handlers(Gestor gestor) {
 		okButton.setToolTipText("");
 		okButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -57,7 +61,7 @@ public class AltaTrabajador extends JDialog {
 		});
 		
 	}
-	public void inicializarGraficos() {
+	private void inicializarGraficos() {
 		setTitle("Alta trabajador");
 		setResizable(false);
 		setBounds(100, 100, 347, 362);

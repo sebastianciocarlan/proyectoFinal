@@ -26,12 +26,16 @@ public class BorrarPersona extends JDialog {
 	private JPanel buttonPane = new JPanel();
 	private JButton okButton = new JButton("Borrar");
 
-
+	/**
+	 * Crea el JDialog.
+	 * 
+	 * @param gestor El gestor del programa
+	 */
 	public BorrarPersona(Gestor gestor) {
 		inicializarGraficos();
 		handler(gestor);
 	}
-	public void handler(Gestor gestor) {
+	private void handler(Gestor gestor) {
 		
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
@@ -42,7 +46,7 @@ public class BorrarPersona extends JDialog {
 
 				
 	}
-	public void inicializarGraficos() {
+	private void inicializarGraficos() {
 		setTitle("Borrar persona");
 		setResizable(false);
 		setBounds(100, 100, 364, 101);

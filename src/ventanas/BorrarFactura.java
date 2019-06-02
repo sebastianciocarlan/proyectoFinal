@@ -26,13 +26,17 @@ public class BorrarFactura extends JDialog {
 	private JPanel buttonPane = new JPanel();
 	private JButton okButton = new JButton("Borrar");
 
-
+	/**
+	 * Crea el JDialog.
+	 * 
+	 * @param gestor El gestor del programa
+	 */
 	public BorrarFactura(Gestor gestor) {
 		setTitle("Borrar Factura");
 		inicializarGraficos();
 		handlers(gestor);
 	}
-	public void handlers(Gestor gestor) {
+	private void handlers(Gestor gestor) {
 		okButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				gestor.delFactura( textFactura.getText());
@@ -41,7 +45,7 @@ public class BorrarFactura extends JDialog {
 		});
 		
 	}
-	public void inicializarGraficos() {
+	private void inicializarGraficos() {
 		setResizable(false);
 		setBounds(100, 100, 288, 129);
 		getContentPane().setLayout(new BorderLayout());

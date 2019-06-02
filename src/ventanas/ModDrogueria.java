@@ -41,25 +41,29 @@ public class ModDrogueria extends JDialog {
 	private JPanel buttonPane = new JPanel();
 	private JButton okButton = new JButton("Modificar");
 
-
-		
-
-
+	/**
+	 * Crea el JDialog.
+	 * 
+	 * @param gestor El gestor del programa
+	 */
 	public ModDrogueria(Gestor gestor) {
 		setTitle("Modificar drogueria");
 		inicializarGraficos();
 		handlers(gestor);
 
 	}
-	public void handlers(Gestor gestor) {
+
+	private void handlers(Gestor gestor) {
 		okButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				gestor.modDrogueria(textCodigoBarras.getText(), textMarca.getText(), textNombre.getText(), (int)spinnerPrecio.getValue(), checkBoxEsImportado.isSelected()  ,textTipo.getText());
+				gestor.modDrogueria(textCodigoBarras.getText(), textMarca.getText(), textNombre.getText(),
+						(int) spinnerPrecio.getValue(), checkBoxEsImportado.isSelected(), textTipo.getText());
 				dispose();
 			}
 		});
 	}
-	public void inicializarGraficos() {
+
+	private void inicializarGraficos() {
 		setResizable(false);
 		setBounds(100, 100, 296, 244);
 		getContentPane().setLayout(new BorderLayout());
@@ -115,7 +119,6 @@ public class ModDrogueria extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-	
 
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);

@@ -38,11 +38,16 @@ public class AltaCliente extends JDialog {
 	private JPanel buttonPane = new JPanel();
 	private JButton okButton = new JButton("Alta");
 	private JCheckBox chckbxEsVip = new JCheckBox("Es VIP");
+	/**
+	 * Crea el JDialog.
+	 * 
+	 * @param gestor El gestor del programa
+	 */
 	public AltaCliente(Gestor gestor) {
 		inicializarGraficos();
 		handlers(gestor);
 	}
-	public void handlers(Gestor gestor) {
+	private void handlers(Gestor gestor) {
 		okButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				gestor.addCliente(textDNI.getText(), textNombre.getText(), textApellidos.getText(), textDomicilio.getText(),datePicker.getDate(),chckbxEsVip.isSelected() );
@@ -51,7 +56,7 @@ public class AltaCliente extends JDialog {
 		});
 
 	}
-	public void inicializarGraficos() {
+	private void inicializarGraficos() {
 		setTitle("Alta cliente");
 		setResizable(false);
 		setBounds(100, 100, 347, 295);

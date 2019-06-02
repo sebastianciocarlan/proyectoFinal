@@ -27,13 +27,17 @@ public class AltaFactura extends JDialog {
 	private final JLabel lblIdFactura = new JLabel("ID Factura:");
 	private final JButton btnCrearFactura = new JButton("Crear factura");
 
-
+	/**
+	 * Crea el JDialog.
+	 * 
+	 * @param gestor El gestor del programa
+	 */
 	public AltaFactura(Gestor gestor) {
 		inicializarGraficos();
 		handlers(gestor);
 		
 	}
-	public void handlers(Gestor gestor) {
+	private void handlers(Gestor gestor) {
 		btnCrearFactura.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				gestor.addFactura(textCliente.getText(), textTrabajador.getText(), textFactura.getText());
@@ -41,7 +45,7 @@ public class AltaFactura extends JDialog {
 			}
 		});
 	}
-	public void inicializarGraficos() {
+	private void inicializarGraficos() {
 		setTitle("Crear Factura");
 		setResizable(false);
 		textFactura.setBounds(190, 36, 170, 20);

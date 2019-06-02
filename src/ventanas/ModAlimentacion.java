@@ -39,13 +39,17 @@ public class ModAlimentacion extends JDialog {
 	private JLabel lblIngredientes = new JLabel("Ingredientes:");
 	private JButton okButton = new JButton("Modificar");
 	private JPanel buttonPane = new JPanel();
-
+	/**
+	 * Crea el JDialog.
+	 * 
+	 * @param gestor El gestor del programa
+	 */
 	public ModAlimentacion(Gestor gestor) {
 		setTitle("Modificar alimentacion");
 		inicializarGraficos();
 		handlers(gestor);
 	}
-	public void handlers (Gestor gestor) {
+	private void handlers (Gestor gestor) {
 		okButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				gestor.modAlimentacion( textCodigoBarras.getText(),textMarca.getText(), textNombre.getText(),(double)spinnerPrecio.getValue(), textAlergenos.getText(), datePicker.getDate(), textIngredientes.getText());
@@ -54,7 +58,7 @@ public class ModAlimentacion extends JDialog {
 		});
 		
 	}
-	public void inicializarGraficos() {
+	private void inicializarGraficos() {
 		setResizable(false);
 		setBounds(100, 100, 428, 418);
 		getContentPane().setLayout(new BorderLayout());

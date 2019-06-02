@@ -26,11 +26,16 @@ public class BorrarProducto extends JDialog {
 	private JPanel buttonPane = new JPanel();
 	private JButton okButton = new JButton("Borrar");
 
-
+	/**
+	 * Crea el JDialog.
+	 * 
+	 * @param gestor El gestor del programa
+	 */
 	public BorrarProducto(Gestor gestor) {
 		inicializarGraficos();
+		handler(gestor);
 	}
-	public void handler(Gestor gestor) {
+	private void handler(Gestor gestor) {
 		okButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				gestor.delProducto(textCodBarras.getText());
@@ -38,7 +43,7 @@ public class BorrarProducto extends JDialog {
 			}
 		});
 	}
-	public void inicializarGraficos() {
+	private void inicializarGraficos() {
 		setTitle("Borrar producto");
 		setResizable(false);
 		setBounds(100, 100, 364, 101);

@@ -38,11 +38,16 @@ public class ModCliente extends JDialog {
 	private JPanel buttonPane = new JPanel();
 	private JButton okButton = new JButton("Modificar");
 	private JCheckBox chckbxEsVip = new JCheckBox("Es vip");
+	/**
+	 * Crea el JDialog.
+	 * 
+	 * @param gestor El gestor del programa
+	 */
 	public ModCliente(Gestor gestor) {
 		inicializarGraficos();
 		handlers(gestor);
 	}
-	public void handlers(Gestor gestor) {
+	private void handlers(Gestor gestor) {
 		okButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				gestor.modCliente(textDNI.getText(), textNombre.getText(), textApellidos.getText(), textDomicilio.getText(),datePicker.getDate(),chckbxEsVip.isSelected() );
@@ -51,7 +56,7 @@ public class ModCliente extends JDialog {
 		});
 
 	}
-	public void inicializarGraficos() {
+	private void inicializarGraficos() {
 		setTitle("Modificar cliente");
 		setResizable(false);
 		setBounds(100, 100, 347, 282);
